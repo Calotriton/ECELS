@@ -1,0 +1,10 @@
+Package: ECELS
+Type: Package
+Title: Calculating ECELS: Conservation Status of Mediterranean Wetlands
+Version: 0.1.0
+Author: Alejandro López-de Sancha
+Maintainer: Author <93lopez.alejandro@gmail.com>
+Description: Obtains the ECELS value, category, and the values of each of its components, from a dataset that includes multiple ponds as rows and the required variables to consider as columns. Based on Sala et al. (2004). <doi:10.5169/seals-738445>.
+License: GPL-2
+Encoding: UTF-8
+LazyData: true

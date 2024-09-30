@@ -70,15 +70,16 @@ ECELS <- function(data) {
 
   print("Component 3 calculated.")
 
-
   # Component 4: Emergent vegetation
   component4 <- rowSums(
     cbind(
-      ifelse(data$Emerse_per < 25, 5,
-             ifelse(data$Emerse_per < 90, 10, 15)),
-      ifelse(data$Emerse_pond < 25, 15,
-             ifelse(data$Emerse_pond < 50, 10,
-                    ifelse(data$Emerse_pond < 90, 5, 0))),
+      ifelse(data$Emerse_per == 0, 0,  # Rule for exactly 0
+             ifelse(data$Emerse_per < 25, 5,
+                    ifelse(data$Emerse_per < 90, 10, 15))),
+      ifelse(data$Emerse_pond == 0, 0,  # Rule for exactly 0
+             ifelse(data$Emerse_pond < 25, 15,
+                    ifelse(data$Emerse_pond < 50, 10,
+                           ifelse(data$Emerse_pond < 90, 5, 0)))),
       ifelse(data$Dominant_com == "Giant_reed", -10,
              ifelse(data$Dominant_com == "Common_reed", -5,
                     ifelse(data$Dominant_com == "Multispecific", 10,
@@ -94,9 +95,8 @@ ECELS <- function(data) {
   )
   component4[component4 < 0] <- 0
   component4[component4 > 30] <- 30
-
+  
   print("Component 4 calculated.")
-
   # Component 5: Hydrophytic vegetation
   component5 <- rowSums(
     cbind(
